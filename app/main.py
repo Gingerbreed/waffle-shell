@@ -8,8 +8,8 @@ def main():
     # Wait for user input
     #input()
     command = input()
-    print(f"{command}: command not found")
-    input()
+    sys.stdout.write(command + ": command not found")
+    
 
 if __name__ == "__main__":
     main()
