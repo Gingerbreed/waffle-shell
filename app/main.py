@@ -3,11 +3,12 @@ import sys
 
 def main():
     i = 1
-    while i > 1000:
+    while bool(i):
         sys.stdout.write("$ ")
         command = input()
         sys.stdout.write(command + ": command not found\n")
-        i += 1
+    else:
+        print('hi')
         
     
 
