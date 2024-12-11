@@ -8,7 +8,7 @@ def main():
     while bool(i):
         sys.stdout.write("$ ")
         response = input()
-        command = response.split()[0]
+        command = response.split(" ")[0]
         # if command in validcommands:
         if "exit" in command:
             break
