@@ -4,7 +4,7 @@ def main():
     validcommands = ["echo", "exit", "type"]
     i = 1
     while bool(i):
-        sys.stdout.write("$ ")
+        print("$ ")
         response = input()
         command = response.split()[0]
         if command in validcommands:
@@ -14,12 +14,12 @@ def main():
                 print(response[5:])
             if "type" in command:
                 if response[5:] in validcommands:
-                    print(response[5:] + " is a shell builtin\n")   
+                    print(response[5:] + " is a shell builtin")   
                 else:
-                    print(response[5:] + ": command not found\n")
+                    print(response[5:] + ": command not found")
 
         else:
-            sys.stdout.write(command + ": command not found\n")
+            print(command + ": command not found")
 
     
 
