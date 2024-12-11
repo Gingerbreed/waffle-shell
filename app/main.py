@@ -4,8 +4,7 @@ import os
 def main():
     validcommands = ["echo", "exit", "type"]
     PATH = os.environ.get("PATH")
-    i = 1
-    while bool(i):
+    while True:
         sys.stdout.write("$ ")
         response = input()
         command = response.split(" ")[0]
