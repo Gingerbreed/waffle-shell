@@ -4,7 +4,7 @@ def main():
     validcommands = ["echo", "exit", "type"]
     i = 1
     while bool(i):
-        print("$ ")
+        sys.stdout.write("$ ")
         response = input()
         command = response.split()[0]
         if command in validcommands:
@@ -19,7 +19,7 @@ def main():
                     print(response[5:] + ": command not found")
 
         else:
-            print(command + ": command not found")
+            print(command + ": command not found\n")
 
     
 
