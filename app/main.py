@@ -5,8 +5,6 @@ from typing import Optional
 
 def find_in_path(param):
     path = os.environ['PATH']
-    print("Path: " + path)
-    print(f"Param: {param}")
     for directory in path.split(":"):
         for (dirpath, dirnames, filenames) in os.walk(directory):
             if param in filenames:
