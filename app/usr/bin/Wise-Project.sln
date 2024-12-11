@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wise-Backend", "Wise-Backend\Wise-Backend.csproj", "{12EF542C-AA14-4A9B-8314-A89612F73FBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wisej-Frontend", "Wisej-Frontend\Wisej-Frontend.csproj", "{B4C9BC72-CD32-4C90-9B95-123635EF91FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12EF542C-AA14-4A9B-8314-A89612F73FBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12EF542C-AA14-4A9B-8314-A89612F73FBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12EF542C-AA14-4A9B-8314-A89612F73FBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12EF542C-AA14-4A9B-8314-A89612F73FBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4C9BC72-CD32-4C90-9B95-123635EF91FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4C9BC72-CD32-4C90-9B95-123635EF91FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4C9BC72-CD32-4C90-9B95-123635EF91FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4C9BC72-CD32-4C90-9B95-123635EF91FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

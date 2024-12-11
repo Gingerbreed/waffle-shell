@@ -30,6 +30,13 @@ def main():
                 print(response[5:] + ": not found")
             continue
         else:
+            cmd_run = None
+            for path in paths:
+                if os.path.isfile():
+                     cmd_run = f"{path}/{cmd}"
+            if(cmd_run):
+                os.system(command)
+                continue
             print(command + ": command not found")
 
     
