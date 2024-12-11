@@ -32,7 +32,7 @@ def main():
         else:
             cmd_run = None
             for path in paths:
-                if os.path.isfile():
+                if os.path.isfile(f"{path}/{cmd}"):
                      cmd_run = f"{path}/{cmd}"
             if(cmd_run):
                 os.system(command)
