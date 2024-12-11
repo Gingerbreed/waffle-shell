@@ -25,18 +25,12 @@ def main():
                     case ["echo" | "exit" | "type"]:
                         print(f"${cmd[0]} is a shell builtin")
                     case _:
-                        cmd = response.split(" ")[1]
-                        cmd_path = None
-                        paths = PATH.split(":")
-                        for path in paths:
-                            if os.path.isfile(f"{path}/{cmd} "):
-                                cmd_path = f"{path}/{cmd}"
-                        if cmd_path:
-                            print(f"{cmd} is {cmd_path}")    
+                        if executable := locate_executable(args[0]):
+                            print(f"{cmd} is {executable}")    
                         else:
                             print(response[5:] + ": not found")
             case _:
-                if os.path.isfile(command):
+                if executable := locate_executable(command):
                     subprocess.run([command, response.split(" ")[1]])
                 print(f"{response}: command not found")
 
