@@ -16,8 +16,8 @@ def main():
     PATH = os.environ.get("PATH")
     while True:
         sys.stdout.write("$ ")
-        command, *args = input().split(" ")
-        match command:
+        command = input()
+        match command.split(" "):
             case ["exit", "0"]:
                 exit(0)
             case ["echo", *cmd]:
@@ -25,15 +25,16 @@ def main():
             case ["type", *cmd]:
                 match cmd:
                     case ["echo" | "exit" | "type"]:
-                        print(f"${cmd[0]} is a shell builtin")
+                        print(f"{cmd[0]} is a shell builtin")
                     case _:
-                        if executable := find_in_path(cmd):
-                            print(f"{cmd} is {executable}")    
+                        location = find_in_path(cmd[0])
+                        if location:
+                            print(f"{cmd[0]} is {location}")
                         else:
-                            print(response[5:] + ": not found")
+                            print(cmd +": not found")
             case _:
-                if executable := find_in_path(command):
-                    subprocess.run([executable, *args])
+                if os.path.isfile(command.split(" ")[0]):
+                    os.system(command)
                 else:
                     print(f"{command}: command not found")
 
