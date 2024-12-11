@@ -16,7 +16,7 @@ def main():
                 if response[5:] in validcommands:
                     print(response[5:] + " is a shell builtin")   
                 else:
-                    print(response[5:] + ": command not found")
+                    print(response[5:] + ": not found")
 
         else:
             print(command + ": command not found\n")
