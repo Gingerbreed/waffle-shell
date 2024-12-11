@@ -2,6 +2,13 @@ import sys
 import os
 import subprocess
 
+def locate_executable(command) -> Optional[str]:
+    path = os.environ.get("PATH", "")
+    for directory in path.split(":"):
+        file_path = os.path.join(directory, command)
+        if os.path.isfile(file_path) and os.access(file_path, os.X_OK):
+            return file_path
+
 def main():
     validcommands = ["echo", "exit", "type"]
     PATH = os.environ.get("PATH")
