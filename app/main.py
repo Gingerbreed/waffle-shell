@@ -3,12 +3,15 @@ import os
 import subprocess
 from typing import Optional
 
-def locate_executable(command) -> Optional[str]:
-    path = os.environ.get("PATH", "")
+def find_in_path(param):
+    path = os.environ['PATH']
+    print("Path: " + path)
+    print(f"Param: {param}")
     for directory in path.split(":"):
-        file_path = os.path.join(directory, command)
-        if os.path.isfile(file_path) and os.access(file_path, os.X_OK):
-            return file_path
+        for (dirpath, dirnames, filenames) in os.walk(directory):
+            if param in filenames:
+                return f"{dirpath}/{param}"
+    return None
 
 def main():
     validcommands = ["echo", "exit", "type"]
@@ -26,12 +29,12 @@ def main():
                     case ["echo" | "exit" | "type"]:
                         print(f"${cmd[0]} is a shell builtin")
                     case _:
-                        if executable := locate_executable(cmd):
+                        if executable := find_in_path(cmd):
                             print(f"{cmd} is {executable}")    
                         else:
                             print(response[5:] + ": not found")
             case _:
-                if executable := locate_executable(command):
+                if executable := find_in_path(command):
                     subprocess.run([executable, *args])
                 else:
                     print(f"{command}: command not found")
