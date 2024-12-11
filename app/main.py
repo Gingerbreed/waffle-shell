@@ -15,7 +15,7 @@ def main():
     PATH = os.environ.get("PATH")
     while True:
         sys.stdout.write("$ ")
-         command, *args = input().split(" ")
+        command, *args = input().split(" ")
         match command:
             case ["exit", "0"]:
                 exit(0)
