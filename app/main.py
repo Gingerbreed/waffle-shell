@@ -1,5 +1,6 @@
 import sys
 import os
+import subprocess
 
 def main():
     validcommands = ["echo", "exit", "type"]
@@ -29,32 +30,8 @@ def main():
                             print(response[5:] + ": not found")
             case _:
                 if os.path.isfile(command):
-                    os.system(response)
+                    subprocess.run([command, response.split(" ")[1]])
                 print(f"{response}: command not found")
-        # # if command in validcommands:
-        # if "exit" in command:
-        #     break
-        # if "echo" in command:
-        #     print(response[5:])
-        #     continue
-        # if "type" in command:
-        #     cmd = response.split(" ")[1]
-        #     cmd_path = None
-        #     paths = PATH.split(":")
-        #     for path in paths:
-        #         if os.path.isfile(f"{path}/{cmd} "):
-        #             cmd_path = f"{path}/{cmd}"
-        #     if response[5:] in validcommands:
-        #         print(response[5:] + " is a shell builtin")
-        #     elif cmd_path:
-        #         print(f"{cmd} is {cmd_path}") 
-        #     else:
-        #         print(response[5:] + ": not found")
-        #     continue
-        # else:
-        #     if os.path.isfile(command):
-        #         os.system(response)
-        #     print(command + ": command not found")
 
     
 
