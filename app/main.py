@@ -10,14 +10,13 @@ def main():
         # if command in validcommands:
         if "exit" in command:
             break
-        if "echo" in command:
+        elif "echo" in command:
             print(response[5:])
-        if "type" in command:
+        elif "type" in command:
             if response[5:] in validcommands:
                 print(response[5:] + " is a shell builtin")   
             else:
                 print(response[5:] + ": not found")
-
         else:
             print(command + ": command not found\n")
 
