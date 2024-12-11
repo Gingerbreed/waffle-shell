@@ -18,7 +18,7 @@ def main():
             else:
                 print(response[5:] + ": not found")
         else:
-            print(command + ": command not found\n")
+            print(command + ": command not found")
 
     
 
