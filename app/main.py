@@ -28,7 +28,7 @@ def main():
                         else:
                             print(response[5:] + ": not found")
             case _:
-                if os.path.isfile(response.split(" ")[0]):
+                if os.path.isfile(command):
                     os.system(response)
                 print(f"{response}: command not found")
         # # if command in validcommands:
