@@ -32,7 +32,7 @@ def main():
                             print(response[5:] + ": not found")
             case _:
                 if executable := locate_executable(command):
-                    subprocess.run([executable, *args})
+                    subprocess.run([executable, *args])
                 else:
                     print(f"{command}: command not found")
 
