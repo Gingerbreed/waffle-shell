@@ -8,30 +8,43 @@ def main():
         sys.stdout.write("$ ")
         response = input()
         command = response.split(" ")[0]
-        # if command in validcommands:
-        if "exit" in command:
-            break
-        if "echo" in command:
-            print(response[5:])
-            continue
-        if "type" in command:
-            cmd = response.split(" ")[1]
-            cmd_path = None
-            paths = PATH.split(":")
-            for path in paths:
-                if os.path.isfile(f"{path}/{cmd}"):
-                    cmd_path = f"{path}/{cmd}"
-            if response[5:] in validcommands:
-                print(response[5:] + " is a shell builtin")
-            elif cmd_path:
-                print(f"{cmd} is {cmd_path}") 
-            else:
-                print(response[5:] + ": not found")
-            continue
-        else:
-            if os.path.isfile(command):
-                os.system(response)
-            print(command + ": command not found")
+        match command.split(" "):
+            case ["exit", "0"]:
+                exit(0)
+            case ["echo", *cmd]:
+                print(" ".join(cmd))
+            case ["type", *cmd]:
+                match cmd:
+                    case ["echo" | "exit" | "type"]:
+                        print(f"${cmd[0]} is a shell builtin")
+                    case _:
+                        print(f"${" ".join(cmd)} not found")
+            case _:
+                print(f"{command}: command not found")
+        # # if command in validcommands:
+        # if "exit" in command:
+        #     break
+        # if "echo" in command:
+        #     print(response[5:])
+        #     continue
+        # if "type" in command:
+        #     cmd = response.split(" ")[1]
+        #     cmd_path = None
+        #     paths = PATH.split(":")
+        #     for path in paths:
+        #         if os.path.isfile(f"{path}/{cmd}"):
+        #             cmd_path = f"{path}/{cmd}"
+        #     if response[5:] in validcommands:
+        #         print(response[5:] + " is a shell builtin")
+        #     elif cmd_path:
+        #         print(f"{cmd} is {cmd_path}") 
+        #     else:
+        #         print(response[5:] + ": not found")
+        #     continue
+        # else:
+        #     if os.path.isfile(command):
+        #         os.system(response)
+        #     print(command + ": command not found")
 
     
 
