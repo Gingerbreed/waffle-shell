@@ -33,8 +33,8 @@ def main():
                         else:
                             print(cmd +": not found")
             case _:
-                if os.path.isfile(command.split(" ")[0]):
-                    os.system(command)
+                if executable := find_in_path(command):
+                   subprocess.run([executable, command.split(" ")[1:]])
                 else:
                     print(f"{command}: command not found")
 
