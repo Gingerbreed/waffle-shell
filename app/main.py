@@ -26,7 +26,7 @@ def main():
                     case ["echo" | "exit" | "type"]:
                         print(f"${cmd[0]} is a shell builtin")
                     case _:
-                        if executable := locate_executable(args[0]):
+                        if executable := locate_executable(cmd):
                             print(f"{cmd} is {executable}")    
                         else:
                             print(response[5:] + ": not found")
