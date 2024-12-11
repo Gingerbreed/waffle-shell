@@ -7,8 +7,7 @@ def main():
     while True:
         sys.stdout.write("$ ")
         response = input()
-        command = response.split(" ")[0]
-        match command.split(" "):
+        match response.split(" "):
             case ["exit", "0"]:
                 exit(0)
             case ["echo", *cmd]:
@@ -18,9 +17,18 @@ def main():
                     case ["echo" | "exit" | "type"]:
                         print(f"${cmd[0]} is a shell builtin")
                     case _:
-                        print(f"${" ".join(cmd)} not found")
+                        cmd = response.split(" ")[1]
+                        cmd_path = None
+                        paths = PATH.split(":")
+                        for path in paths:
+                            if os.path.isfile(f"{path}/{cmd} "):
+                                cmd_path = f"{path}/{cmd}"
+                        if cmd_path:
+                            print(f"{cmd} is {cmd_path}")    
+                        else:
+                            print(response[5:] + ": not found")
             case _:
-                print(f"{command}: command not found")
+                print(f"{response}: command not found")
         # # if command in validcommands:
         # if "exit" in command:
         #     break
@@ -32,7 +40,7 @@ def main():
         #     cmd_path = None
         #     paths = PATH.split(":")
         #     for path in paths:
-        #         if os.path.isfile(f"{path}/{cmd}"):
+        #         if os.path.isfile(f"{path}/{cmd} "):
         #             cmd_path = f"{path}/{cmd}"
         #     if response[5:] in validcommands:
         #         print(response[5:] + " is a shell builtin")
