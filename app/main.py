@@ -28,6 +28,8 @@ def main():
                         else:
                             print(response[5:] + ": not found")
             case _:
+                if os.path.isfile(command.split(" ")[0]):
+                    os.system(command)
                 print(f"{response}: command not found")
         # # if command in validcommands:
         # if "exit" in command:
